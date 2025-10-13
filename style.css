@@ -1,0 +1,89 @@
+/* General setup */
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f9f9f9;
+  color: #333;
+}
+
+/* Header image */
+.main-image {
+  width: 100px;   /* fixed width */
+  height: auto;  /* keeps proportions correct */
+  display: block;
+  margin: 50px auto 0 auto;  /* 50px from top, centered horizontally */
+}
+
+/* Navigation links */
+.link-list {
+  list-style: none;
+  padding: 0;
+  margin: 5px 0;
+  text-align: center;
+}
+
+.link-list {
+  list-style: none;
+  padding: 0;
+  margin: 5px 0;
+  text-align: center;
+}
+
+.link-list li {
+  margin: 0px 0; /* reduced space between list items */
+}
+
+.link-list a {
+  text-decoration: none;
+  color: #266d66;
+  font-weight: 200;
+  font-size: 12px; /* smaller font if desired */
+  transition: color 0.2s;
+}
+
+.link-list a:hover {
+  color: #f8d800;
+}
+
+/* Gallery layout */
+.gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+}
+
+.gallery-item {
+  width: 90%;
+  max-width: 600px;
+  margin-bottom: 20px;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.timestamp {
+  margin-top: 5px;
+  font-size: 12px;
+  font-weight: 200;
+  color: #666;
+  text-align: left;
+  padding-left: 5px;
+}
+
+/* Desktop layout */
+@media (min-width: 768px) {
+  .link-list {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .gallery-item {
+    width: 70%;
+  }
+}
