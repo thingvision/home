@@ -1,14 +1,25 @@
-backend:
-  name: git-gateway
-  branch: main
-
-media_folder: "uploads"
-public_folder: "/uploads"
-
-collections:
-  - name: "posts"
-    label: "Posts"
+- name: "posts"
+    label: "Home Posts"
     folder: "posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - label: "Date"
+        name: "date"
+        widget: "datetime"
+        time_format: false
+        format: "YYYY/MM/DD"
+      - label: "Media"
+        name: "media"
+        widget: "file"
+      - label: "Caption"
+        name: "caption"
+        widget: "string"
+        required: false
+
+  - name: "luluplanet"
+    label: "Luluplanet Posts"
+    folder: "luluplanet-posts"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
