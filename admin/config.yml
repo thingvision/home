@@ -19,5 +19,5 @@ collections:
           time_format: false,
           format: "YYYY/MM/DD"
         }
-      - { label: "Image", name: "image", widget: "image" }
+     - { label: "Media", name: "media", widget: "file" }
       - { label: "Caption", name: "caption", widget: "string", required: false }
