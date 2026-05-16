@@ -25,7 +25,7 @@
     <div class="menu-panel">
       <button class="menu-close" id="menuClose">&#x2715;</button>
       <a class="menu-item" href="https://www.instagram.com/thingvision_/" target="_blank">Instagram</a>
-      <a class="menu-item" href="https://www.tiktok.com/@thingvision" target="_blank">TikTok</a>
+      <a class="menu-item" href="https://www.tiktok.com/@thingvision_" target="_blank">TikTok</a>
       <a class="menu-item" href="random.html">Random</a>
       <a class="menu-item" href="luluplanet.html">LuLu Planet</a>
       <a class="menu-item" href="about.html">About</a>
@@ -51,8 +51,7 @@
         return parsePost(await r.text());
       }));
       posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-      const latest = posts.slice(0, 5); // HOME: max 5 posts
-      gallery.innerHTML = latest.map(renderPost).join("");
+      gallery.innerHTML = posts.slice(0, 5).map(renderPost).join("");
     }
 
     function renderPost(post) {
@@ -82,5 +81,3 @@
   </script>
 </body>
 </html>
-    
-    
