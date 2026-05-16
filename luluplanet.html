@@ -56,15 +56,16 @@
       gallery.innerHTML = posts.map(renderPost).join("");
     }
 
-    function renderPost(post) {
-      const media = post.media || post.image;
-      const isVideo = media && media.toLowerCase().endsWith(".mp4");
-      return `
-        <div class="gallery-item">
-          ${isVideo ? `<video src="${media}" controls playsinline></video>` : `<img src="${media}" alt="Post">`}
-          <p class="timestamp">${post.date}</p>
-          ${post.caption ? `<p class="caption">${post.caption}</p>` : ""}
-        </div>`;
+   function renderPost(post) {
+  const media = post.media || post.image;
+  if (!media) return "";
+  const isVideo = media.toLowerCase().endsWith(".mp4");
+  const src = `https://raw.githubusercontent.com/thingvision/home/main${media}`;
+  return `
+    <div class="gallery-item">
+      ${isVideo ? `<video src="${src}" controls playsinline></video>` : `<img src="${src}" alt="Post">`}
+      ${post.caption ? `<p class="caption">${post.caption}</p>` : ""}
+    </div>`;
     }
 
     function parsePost(text) {
