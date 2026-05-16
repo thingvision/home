@@ -13,17 +13,13 @@
       <span></span><span></span><span></span>
     </button>
   </div>
-
   <div class="hero">
     <a href="index.html">
       <img src="llplogo.png" alt="LuLu Planet logo" style="height: 150px; width: auto;" />
     </a>
   </div>
-
   <p style="text-align: center; font-family: 'Poppins', sans-serif; font-size: 12pt; font-weight: 300; color: #000000; max-width: 500px; margin: 0 auto 40px; padding: 0 20px; line-height: 1.7;">Lulu Planet is a story I'm building one moment at a time about a boy looking for his home (literally) in a strange, unfamiliar planet. I do not fully know where the story is going yet. Eventually, I hope all of these scenes come together into something complete.</p>
-
   <section class="gallery" id="gallery"></section>
-
   <div class="menu-overlay" id="menuOverlay">
     <div class="menu-panel">
       <button class="menu-close" id="menuClose">&#x2715;</button>
@@ -33,7 +29,6 @@
       <a class="menu-item" href="about.html">About</a>
     </div>
   </div>
-
   <script>
     const btn = document.getElementById('menuBtn');
     const overlay = document.getElementById('menuOverlay');
@@ -54,7 +49,7 @@
         const text = await r.text();
         return parsePost(text);
       }));
-      posts.sort((a, b) => new Date(a.date) - new Date(b.date));
+      posts.sort((a, b) => new Date(b.date) - new Date(a.date));
       gallery.innerHTML = posts.map(renderPost).join("");
     }
 
@@ -66,8 +61,8 @@
       return `
         <div class="gallery-item">
           ${isVideo
-            ? `<video src="${src}" controls playsinline></video>`
-            : `<img src="${src}" alt="Post">`}
+            ? `<video src="${src}" controls playsinline preload="none"></video>`
+            : `<img src="${src}" alt="Post" loading="lazy">`}
           ${post.caption ? `<p class="caption">${post.caption}</p>` : ""}
         </div>`;
     }
