@@ -8,8 +8,13 @@ collections:
     label: "Home Posts"
     folder: "posts"
     create: true
-    slug: "{{slug}}"
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
+      - label: "Date"
+        name: "date"
+        widget: "datetime"
+        time_format: false
+        format: "YYYY-MM-DD"
       - label: "Media"
         name: "media"
         widget: "file"
@@ -21,10 +26,15 @@ collections:
     label: "Luluplanet Posts"
     folder: "luluplanet-posts"
     create: true
-    slug: "{{slug}}"
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     media_folder: "/uploads"
     public_folder: "/uploads"
     fields:
+      - label: "Date"
+        name: "date"
+        widget: "datetime"
+        time_format: false
+        format: "YYYY-MM-DD"
       - label: "Media"
         name: "media"
         widget: "file"
@@ -36,10 +46,15 @@ collections:
     label: "Random Posts"
     folder: "random-posts"
     create: true
-    slug: "{{slug}}"
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     media_folder: "/uploads"
     public_folder: "/uploads"
     fields:
+      - label: "Date"
+        name: "date"
+        widget: "datetime"
+        time_format: false
+        format: "YYYY-MM-DD"
       - label: "Media"
         name: "media"
         widget: "file"
