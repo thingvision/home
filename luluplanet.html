@@ -8,21 +8,17 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
   <div class="nav-bar">
     <button class="hamburger" id="menuBtn" aria-label="Open menu">
       <span></span><span></span><span></span>
     </button>
   </div>
-
   <div class="hero">
     <a href="index.html">
       <img src="main-image.png" alt="Thingvision logo" />
     </a>
   </div>
-
   <section class="gallery" id="gallery"></section>
-
   <div class="menu-overlay" id="menuOverlay">
     <div class="menu-panel">
       <button class="menu-close" id="menuClose">&#x2715;</button>
@@ -33,7 +29,6 @@
       <a class="menu-item" href="about.html">About</a>
     </div>
   </div>
-
   <script>
     const btn = document.getElementById('menuBtn');
     const overlay = document.getElementById('menuOverlay');
@@ -45,18 +40,30 @@
     async function loadPosts() {
       const gallery = document.getElementById("gallery");
       const res = await fetch(`https://api.github.com/repos/thingvision/home/contents/luluplanet-posts`);
-      if (!res.ok) { gallery.innerHTML = "<p>API failed</p>"; return; }
+      if (!res.ok) { gallery.innerHTML = "<p style='text-align:center;color:#aaa;padding:40px;'>No posts yet.</p>"; return; }
       const files = await res.json();
       const postFiles = files.filter(f => f.name.endsWith(".md"));
-      gallery.innerHTML = `<p>Found ${postFiles.length} md files</p>`;
+      if (postFiles.length === 0) { gallery.innerHTML = "<p style='text-align:center;color:#aaa;padding:40px;'>No posts yet.</p>"; return; }
       const posts = await Promise.all(postFiles.map(async f => {
         const r = await fetch(f.download_url);
         const text = await r.text();
-        gallery.innerHTML += `<p>Raw text: ${text}</p>`;
-        const parsed = parsePost(text);
-        gallery.innerHTML += `<p>Parsed media: ${parsed.media}</p>`;
-        return parsed;
+        return parsePost(text);
       }));
+      gallery.innerHTML = posts.map(renderPost).join("");
+    }
+
+    function renderPost(post) {
+      const media = post.media || post.image;
+      if (!media) return "";
+      const isVideo = media.toLowerCase().endsWith(".mp4");
+      const src = `https://raw.githubusercontent.com/thingvision/home/main${media}`;
+      return `
+        <div class="gallery-item">
+          ${isVideo
+            ? `<video src="${src}" controls playsinline></video>`
+            : `<img src="${src}" alt="Post">`}
+          ${post.caption ? `<p class="caption">${post.caption}</p>` : ""}
+        </div>`;
     }
 
     function parsePost(text) {
@@ -74,6 +81,5 @@
 
     loadPosts();
   </script>
-
 </body>
 </html>
