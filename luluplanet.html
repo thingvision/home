@@ -1,3 +1,8 @@
+Here are both files:
+
+luluplanet.html
+html
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +20,7 @@
   </div>
   <div class="hero">
     <a href="index.html">
-      <img src="main-image.png" alt="Thingvision logo" />
+      <img src="llplogo.png" alt="LuLu Planet logo" style="height: 200px; width: auto;" />
     </a>
   </div>
   <section class="gallery" id="gallery"></section>
@@ -24,7 +29,6 @@
       <button class="menu-close" id="menuClose">&#x2715;</button>
       <a class="menu-item" href="https://www.instagram.com/thingvision_/" target="_blank">Instagram</a>
       <a class="menu-item" href="https://www.tiktok.com/@thingvision_" target="_blank">TikTok</a>
-      <a class="menu-item" href="random.html">Random</a>
       <a class="menu-item" href="luluplanet.html">LuLu Planet</a>
       <a class="menu-item" href="about.html">About</a>
     </div>
@@ -49,6 +53,7 @@
         const text = await r.text();
         return parsePost(text);
       }));
+      posts.sort((a, b) => new Date(a.date) - new Date(b.date)); // earliest to latest
       gallery.innerHTML = posts.map(renderPost).join("");
     }
 
