@@ -56,7 +56,7 @@
       gallery.innerHTML = posts.map(renderPost).join("");
     }
 
-   function renderPost(post) {
+function renderPost(post) {
   const media = post.media || post.image;
   if (!media) return "";
   const isVideo = media.toLowerCase().endsWith(".mp4");
