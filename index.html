@@ -58,8 +58,8 @@
       return `
         <div class="gallery-item">
           ${isVideo
-            ? `<video src="${src}" controls playsinline></video>`
-            : `<img src="${src}" alt="Post">`}
+            ? `<video src="${src}" controls playsinline preload="none"></video>`
+            : `<img src="${src}" alt="Post" loading="lazy">`}
           ${post.caption ? `<p class="caption">${post.caption}</p>` : ""}
         </div>`;
     }
@@ -81,3 +81,4 @@
   </script>
 </body>
 </html>
+     
