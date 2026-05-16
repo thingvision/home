@@ -68,7 +68,7 @@ function renderPost(post) {
     </div>`;
     }
 
-   function parsePost(text) {
+ function parsePost(text) {
   const data = {};
   text.split("\n").forEach(line => {
     line = line.replace(/^---/, "").trim();
