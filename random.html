@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Random — Thingvision</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="nav-bar">
+    <button class="hamburger" id="menuBtn" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div class="hero">
+    <img src="main-image.png" alt="Thingvision logo" />
+  </div>
+
+  <section class="gallery" id="gallery"></section>
+
+  <div class="menu-overlay" id="menuOverlay">
+    <div class="menu-panel">
+      <button class="menu-close" id="menuClose">&#x2715;</button>
+      <a class="menu-item" href="https://www.instagram.com/thingvision_/" target="_blank">Instagram</a>
+      <a class="menu-item" href="https://www.tiktok.com/@thingvision" target="_blank">TikTok</a>
+      <a class="menu-item" href="random.html">Random</a>
+      <a class="menu-item" href="luluplanet.html">LuLu Planet</a>
+      <a class="menu-item" href="about.html">About</a>
+    </div>
+  </div>
+
+  <script>
+    const btn = document.getElementById('menuBtn');
+    const overlay = document.getElementById('menuOverlay');
+    const close = document.getElementById('menuClose');
+    btn.addEventListener('click', () => overlay.classList.add('open'));
+    close.addEventListener('click', () => overlay.classList.remove('open'));
+    overlay.addEventListener('click', (e) => { if(e.target === overlay) overlay.classList.remove('open'); });
+
+    async function loadPosts() {
+      const gallery = document.getElementById("gallery");
+      const res = await fetch(`https://api.github.com/repos/thingvision/home/contents/random-posts`);
+      if (!res.ok) { gallery.innerHTML = "<p style='text-align:center;color:#aaa;padding:40px;'>No posts yet.</p>"; return; }
+      const files = await res.json();
+      const postFiles = files.filter(f => f.name.endsWith(".md"));
+      const posts = await Promise.all(postFiles.map(async f => {
+        const r = await fetch(f.download_url);
+        return parsePost(await r.text());
+      }));
+      posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+      gallery.innerHTML = posts.map(renderPost).join(""); // ALL posts
+    }
+
+    function renderPost(post) {
+      const media = post.media || post.image;
+      const isVideo = media && media.toLowerCase().endsWith(".mp4");
+      return `
+        <div class="gallery-item">
+          ${isVideo ? `<video src="${media}" controls playsinline></video>` : `<img src="${media}" alt="Post">`}
+          <p class="timestamp">${post.date}</p>
+          ${post.caption ? `<p class="caption">${post.caption}</p>` : ""}
+        </div>`;
+    }
+
+    function parsePost(text) {
+      const frontmatter = text.split("---")[1];
+      const data = {};
+      frontmatter.split("\n").forEach(line => {
+        const [key, ...val] = line.split(":");
+        if (!key || val.length === 0) return;
+        let v = val.join(":").trim().replace(/^["']|["']$/g, "");
+        data[key.trim()] = v;
+      });
+      return data;
+    }
+
+    loadPosts();
+  </script>
+</body>
+</html>
