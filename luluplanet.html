@@ -15,11 +15,11 @@
     </button>
   </div>
 
-<div class="hero">
-  <a href="index.html">
-    <img src="main-image.png" alt="Thingvision logo" />
-  </a>
-</div>
+  <div class="hero">
+    <a href="index.html">
+      <img src="main-image.png" alt="Thingvision logo" />
+    </a>
+  </div>
 
   <section class="gallery" id="gallery"></section>
 
@@ -45,43 +45,35 @@
     async function loadPosts() {
       const gallery = document.getElementById("gallery");
       const res = await fetch(`https://api.github.com/repos/thingvision/home/contents/luluplanet-posts`);
-      if (!res.ok) { gallery.innerHTML = "<p style='text-align:center;color:#aaa;padding:40px;'>No posts yet.</p>"; return; }
+      if (!res.ok) { gallery.innerHTML = "<p>API failed</p>"; return; }
       const files = await res.json();
       const postFiles = files.filter(f => f.name.endsWith(".md"));
+      gallery.innerHTML = `<p>Found ${postFiles.length} md files</p>`;
       const posts = await Promise.all(postFiles.map(async f => {
         const r = await fetch(f.download_url);
-        return parsePost(await r.text());
+        const text = await r.text();
+        gallery.innerHTML += `<p>Raw text: ${text}</p>`;
+        const parsed = parsePost(text);
+        gallery.innerHTML += `<p>Parsed media: ${parsed.media}</p>`;
+        return parsed;
       }));
-      posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-      gallery.innerHTML = posts.map(renderPost).join("");
     }
 
-function renderPost(post) {
-  const media = post.media || post.image;
-  if (!media) return "";
-  const isVideo = media.toLowerCase().endsWith(".mp4");
-  const src = `https://raw.githubusercontent.com/thingvision/home/main${media}`;
-  return `
-    <div class="gallery-item">
-      ${isVideo ? `<video src="${src}" controls playsinline></video>` : `<img src="${src}" alt="Post">`}
-      ${post.caption ? `<p class="caption">${post.caption}</p>` : ""}
-    </div>`;
+    function parsePost(text) {
+      const data = {};
+      text.split("\n").forEach(line => {
+        line = line.replace(/^---/, "").trim();
+        const colonIndex = line.indexOf(":");
+        if (colonIndex === -1) return;
+        const key = line.substring(0, colonIndex).trim();
+        const value = line.substring(colonIndex + 1).trim().replace(/^["']|["']$/g, "");
+        if (key) data[key] = value;
+      });
+      return data;
     }
-
- function parsePost(text) {
-  const data = {};
-  text.split("\n").forEach(line => {
-    line = line.replace(/^---/, "").trim();
-    const colonIndex = line.indexOf(":");
-    if (colonIndex === -1) return;
-    const key = line.substring(0, colonIndex).trim();
-    const value = line.substring(colonIndex + 1).trim().replace(/^["']|["']$/g, "");
-    if (key) data[key] = value;
-  });
-  return data;
-}
 
     loadPosts();
   </script>
+
 </body>
 </html>
