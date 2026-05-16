@@ -68,17 +68,18 @@ function renderPost(post) {
     </div>`;
     }
 
-    function parsePost(text) {
-      const frontmatter = text.split("---")[1];
-      const data = {};
-      frontmatter.split("\n").forEach(line => {
-        const [key, ...val] = line.split(":");
-        if (!key || val.length === 0) return;
-        let v = val.join(":").trim().replace(/^["']|["']$/g, "");
-        data[key.trim()] = v;
-      });
-      return data;
-    }
+   function parsePost(text) {
+  const data = {};
+  text.split("\n").forEach(line => {
+    line = line.replace(/^---/, "").trim();
+    const colonIndex = line.indexOf(":");
+    if (colonIndex === -1) return;
+    const key = line.substring(0, colonIndex).trim();
+    const value = line.substring(colonIndex + 1).trim().replace(/^["']|["']$/g, "");
+    if (key) data[key] = value;
+  });
+  return data;
+}
 
     loadPosts();
   </script>
