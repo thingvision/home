@@ -1,4 +1,5 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { overflow-x: hidden; width: 100%; }
 body { background: #ffffff; font-family: 'Poppins', sans-serif; }
 
 /* NAV */
@@ -9,10 +10,9 @@ body { background: #ffffff; font-family: 'Poppins', sans-serif; }
 /* DRAWER */
 .menu-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.18); z-index: 10; }
 .menu-overlay.open { display: block; }
-.menu-panel { position: absolute; top: 0; left: 0; width: 220px; height: 100%; background: #ff6e2b; border-right: none; padding: 60px 0 24px; }
+.menu-panel { position: fixed; top: 0; left: 0; width: 220px; height: 100%; background: #ff6e2b; padding: 60px 0 24px; z-index: 20; }
 .menu-close { position: absolute; top: 16px; right: 16px; font-size: 20px; cursor: pointer; color: #ffffff; background: none; border: none; }
 .menu-item { display: flex; align-items: center; padding: 16px 28px; font-size: 16px; color: #ffffff; text-decoration: none; }
-.menu-item:last-child { border-bottom: none; }
 
 /* HERO */
 .hero { display: flex; justify-content: center; align-items: center; padding-top: 60px; padding-bottom: 40px; }
@@ -22,5 +22,4 @@ body { background: #ffffff; font-family: 'Poppins', sans-serif; }
 .gallery { display: flex; flex-direction: column; align-items: center; gap: 24px; padding: 0 20px 60px; }
 .gallery-item { width: 100%; max-width: 600px; }
 .gallery-item img, .gallery-item video { width: 100%; border-radius: 12px; display: block; }
-.timestamp { font-size: 12px; color: #aaa; margin-top: 6px; }
-.caption { font-size: 14px; color: #333; margin-top: 4px; }
+.caption { font-size: 14px; color: #333; margin-top: 8px; }
