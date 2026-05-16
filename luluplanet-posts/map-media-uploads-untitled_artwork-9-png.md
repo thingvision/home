@@ -1,3 +1,3 @@
 ---
-media: /uploads/untitled_artwork-9.png
+media: /uploads/1-2-.png
 ---
