@@ -1,86 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>thingvision</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="nav-bar">
-    <button class="hamburger" id="menuBtn" aria-label="Open menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-  <div class="hero">
-    <img src="main-image.png" alt="Thingvision logo" />
-  </div>
-  <section class="gallery" id="gallery"></section>
-  <div class="menu-overlay" id="menuOverlay">
-    <div class="menu-panel">
-      <button class="menu-close" id="menuClose">&#x2715;</button>
-    <a class="menu-item" href="index.html">home</a>
-<a class="menu-item" href="luluplanet.html">lulu planet</a>
-<a class="menu-item" href="https://www.instagram.com/thingvision_/" target="_blank">instagram</a>
-<a class="menu-item" href="https://www.tiktok.com/@thingvision_" target="_blank">tiktok</a>
+<header class="site-header">
 
+  <div class="brand">
+    <a href="index.html">
+      <img src="main-image.png" alt="Thingvision">
+    </a>
 
+    <div class="brand-description">
+      <!-- Write anything you want here -->
+      A little place for things.
     </div>
   </div>
-  <script>
-    const btn = document.getElementById('menuBtn');
-    const overlay = document.getElementById('menuOverlay');
-    const close = document.getElementById('menuClose');
-    btn.addEventListener('click', () => overlay.classList.add('open'));
-    close.addEventListener('click', () => overlay.classList.remove('open'));
-    overlay.addEventListener('click', (e) => { if(e.target === overlay) overlay.classList.remove('open'); });
 
-    async function loadPosts() {
-      const gallery = document.getElementById("gallery");
-      const res = await fetch(`https://api.github.com/repos/thingvision/home/contents/posts`);
-      if (!res.ok) return;
-      const files = await res.json();
-      const postFiles = files.filter(f => f.name.endsWith(".md"));
-      if (postFiles.length === 0) return;
-      const posts = await Promise.all(postFiles.map(async f => {
-        const r = await fetch(f.download_url);
-        const text = await r.text();
-        return parsePost(text);
-      }));
-      posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-      gallery.innerHTML = posts.slice(0, 5).map(renderPost).join("");
-    }
+  <nav class="desktop-navigation">
+    <a href="index.html">home</a>
+    <a href="luluplanet.html">lulu planet</a>
+    <a href="artjournal.html">art journal</a>
+    <a href="YOUR-BIGCARTEL-URL">shop</a>
+    <a href="about.html">about</a>
+  </nav>
 
-    function renderPost(post) {
-      const media = post.media || post.image;
-      if (!media) return "";
-      const isVideo = media.toLowerCase().endsWith(".mp4");
-      const src = `https://raw.githubusercontent.com/thingvision/home/main${media}`;
-      return `
-        <div class="gallery-item">
-          ${isVideo
-            ? `<video src="${src}" controls playsinline preload="none"></video>`
-            : `<img src="${src}" alt="Post" loading="lazy">`}
-       
-        </div>`;
-    }
+  <button class="hamburger" id="menuBtn"
+          aria-label="Open menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 
-    function parsePost(text) {
-      const data = {};
-      text.split("\n").forEach(line => {
-        line = line.replace(/^---/, "").trim();
-        const colonIndex = line.indexOf(":");
-        if (colonIndex === -1) return;
-        const key = line.substring(0, colonIndex).trim();
-        const value = line.substring(colonIndex + 1).trim().replace(/^["']|["']$/g, "");
-        if (key) data[key] = value;
-      });
-      return data;
-    }
-
-    loadPosts();
-  </script>
+</header>
 </body>
 </html>
      
