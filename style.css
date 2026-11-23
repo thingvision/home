@@ -1,6 +1,6 @@
 
 /* =========================
-   THINGVISION - BASE
+   BASE
 ========================= */
 
 * {
@@ -10,8 +10,8 @@
 body {
   margin: 0;
   padding: 0;
-  background: #ffffff;
-  color: #222222;
+  background: #fff;
+  color: #222;
   font-family: Arial, sans-serif;
 }
 
@@ -22,7 +22,7 @@ a {
 
 
 /* =========================
-   DESKTOP HEADER
+   HEADER
 ========================= */
 
 .site-header {
@@ -83,12 +83,12 @@ a {
 
 
 /* =========================
-   MOBILE MENU BUTTON
+   MOBILE MENU
 ========================= */
 
 .hamburger {
   display: none;
-  border: none;
+  border: 0;
   background: none;
   padding: 10px;
   cursor: pointer;
@@ -99,13 +99,8 @@ a {
   width: 25px;
   height: 2px;
   margin: 6px 0;
-  background: #222222;
+  background: #222;
 }
-
-
-/* =========================
-   MOBILE NAVIGATION
-========================= */
 
 .mobile-navigation {
   display: none;
@@ -113,24 +108,24 @@ a {
 
 
 /* =========================
-   HOMEPAGE GRID
+   HOMEPAGE
 ========================= */
 
 .home-content {
-  max-width: 1400px;
-  margin: 50px auto;
+  max-width: 1100px;
+  margin: 35px auto;
   padding: 0 5%;
 }
 
 .home-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 25px;
+  grid-template-columns: repeat(2, minmax(0, 300px));
+  justify-content: center;
+  gap: 20px;
 }
 
 .home-card {
   display: block;
-  position: relative;
   overflow: hidden;
 }
 
@@ -147,13 +142,9 @@ a {
 }
 
 .card-title {
-  padding: 12px 0;
-  font-size: 18px;
+  padding: 10px 0;
+  font-size: 16px;
   text-transform: lowercase;
-}
-
-.shop-card {
-  grid-column: 1 / -1;
 }
 
 
@@ -162,7 +153,7 @@ a {
 ========================= */
 
 .site-footer {
-  padding: 40px 5%;
+  padding: 30px 5%;
   text-align: center;
   font-size: 13px;
 }
@@ -220,7 +211,7 @@ a {
     position: fixed;
     inset: 0;
     z-index: 1000;
-    background: #ffffff;
+    background: #fff;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.25s ease;
@@ -239,23 +230,25 @@ a {
     position: absolute;
     top: 25px;
     right: 6%;
-    border: none;
+    border: 0;
     background: none;
     font-size: 28px;
     cursor: pointer;
   }
 
   .home-content {
-    margin-top: 25px;
+    margin: 25px auto;
   }
 
   .home-grid {
     grid-template-columns: 1fr;
     gap: 20px;
+    max-width: 350px;
+    margin: 0 auto;
   }
 
-  .shop-card {
-    grid-column: auto;
+  .site-footer {
+    padding: 25px 5%;
   }
 }
 
