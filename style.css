@@ -1,35 +1,261 @@
 
-.site-header {
-  display: grid;
-  grid-template-columns: 500px 1fr;
-  align-items: center;
-  gap: 60px;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 30px 40px;
+/* =========================
+   THINGVISION - BASE
+========================= */
+
+* {
+  box-sizing: border-box;
 }
 
-.brand img {
+body {
+  margin: 0;
+  padding: 0;
+  background: #ffffff;
+  color: #222222;
+  font-family: Arial, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* =========================
+   DESKTOP HEADER
+========================= */
+
+.site-header {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 40px 5%;
+  display: grid;
+  grid-template-columns: 500px 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.brand {
+  width: 100%;
+}
+
+.brand-logo {
   display: block;
   width: 100%;
-  height: auto;
+}
+
+.brand-logo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 5 / 4;
   object-fit: contain;
 }
 
 .brand-description {
-  margin-top: 12px;
+  margin-top: 15px;
+  font-size: 15px;
+  line-height: 1.6;
 }
+
+
+/* =========================
+   DESKTOP NAVIGATION
+========================= */
 
 .desktop-navigation {
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 28px;
+  justify-content: center;
+  gap: 32px;
 }
 
 .desktop-navigation a {
-  text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  font-size: 15px;
+  text-transform: lowercase;
   white-space: nowrap;
+  transition: opacity 0.2s ease;
 }
+
+.desktop-navigation a:hover {
+  opacity: 0.5;
+}
+
+
+/* =========================
+   MOBILE MENU BUTTON
+========================= */
+
+.hamburger {
+  display: none;
+  border: none;
+  background: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  display: block;
+  width: 25px;
+  height: 2px;
+  margin: 6px 0;
+  background: #222222;
+}
+
+
+/* =========================
+   MOBILE NAVIGATION
+========================= */
+
+.mobile-navigation {
+  display: none;
+}
+
+
+/* =========================
+   HOMEPAGE GRID
+========================= */
+
+.home-content {
+  max-width: 1400px;
+  margin: 50px auto;
+  padding: 0 5%;
+}
+
+.home-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+}
+
+.home-card {
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+
+.home-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.home-card:hover img {
+  transform: scale(1.03);
+}
+
+.card-title {
+  padding: 12px 0;
+  font-size: 18px;
+  text-transform: lowercase;
+}
+
+.shop-card {
+  grid-column: 1 / -1;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.site-footer {
+  padding: 40px 5%;
+  text-align: center;
+  font-size: 13px;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.social-links a:hover {
+  opacity: 0.5;
+}
+
+
+/* =========================
+   MOBILE LAYOUT
+========================= */
+
+@media (max-width: 850px) {
+
+  .site-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px 6%;
+  }
+
+  .brand {
+    max-width: 500px;
+  }
+
+  .brand-description {
+    font-size: 14px;
+  }
+
+  .desktop-navigation {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+    position: absolute;
+    top: 25px;
+    right: 6%;
+  }
+
+  .mobile-navigation {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: #ffffff;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease;
+  }
+
+  .mobile-navigation.open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .mobile-navigation a {
+    font-size: 22px;
+  }
+
+  .menu-close {
+    position: absolute;
+    top: 25px;
+    right: 6%;
+    border: none;
+    background: none;
+    font-size: 28px;
+    cursor: pointer;
+  }
+
+  .home-content {
+    margin-top: 25px;
+  }
+
+  .home-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .shop-card {
+    grid-column: auto;
+  }
+}
+
