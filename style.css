@@ -1,25 +1,35 @@
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html, body { overflow-x: hidden; width: 100%; }
-body { background: #ffffff; font-family: 'Poppins', sans-serif; }
 
-/* NAV */
-.nav-bar { height: 52px; display: flex; align-items: center; padding: 0 20px; }
-.hamburger { width: 36px; height: 36px; background: #ff6e2b; border: none; border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; cursor: pointer; }
-.hamburger span { display: block; width: 18px; height: 2px; background: #fff; border-radius: 2px; }
+.site-header {
+  display: grid;
+  grid-template-columns: 500px 1fr;
+  align-items: center;
+  gap: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 40px;
+}
 
-/* DRAWER */
-.menu-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.18); z-index: 10; }
-.menu-overlay.open { display: block; }
-.menu-panel { position: fixed; top: 0; left: 0; width: 220px; height: 100%; background: #ff6e2b; padding: 60px 0 24px; z-index: 20; }
-.menu-close { position: absolute; top: 16px; right: 16px; font-size: 20px; cursor: pointer; color: #ffffff; background: none; border: none; }
-.menu-item { display: flex; align-items: center; padding: 16px 28px; font-size: 16px; color: #ffffff; text-decoration: none; }
+.brand img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
 
-/* HERO */
-.hero { display: flex; justify-content: center; align-items: center; padding-top: 60px; padding-bottom: 40px; }
-.hero img { width: 200px; height: 200px; object-fit: contain; }
+.brand-description {
+  margin-top: 12px;
+}
 
-/* GALLERY */
-.gallery { display: flex; flex-direction: column; align-items: center; gap: 24px; padding: 0 20px 60px; }
-.gallery-item { width: 100%; max-width: 600px; }
-.gallery-item img, .gallery-item video { width: 100%; border-radius: 12px; display: block; }
-.caption { font-size: 14px; color: #333; margin-top: 8px; }
+.desktop-navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+}
+
+.desktop-navigation a {
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
