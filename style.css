@@ -125,6 +125,7 @@ a {
 
 .home-card {
   display: block;
+  position: relative;
   overflow: hidden;
 }
 
@@ -133,7 +134,6 @@ a {
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
-  transition: transform 0.3s ease;
 }
 
 .home-card:hover img {
@@ -141,9 +141,17 @@ a {
 }
 
 .card-title {
-  padding: 7px 0;
-  font-size: 13px;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #F05A28;
+  font-size: 16px;
+  font-weight: 400;
   text-transform: lowercase;
+  text-align: center;
+  pointer-events: none;
 }
 
 
