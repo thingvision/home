@@ -1,12 +1,16 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
   <title>Thingvision</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css?v=3">
 </head>
 
 <body>
@@ -26,9 +30,16 @@
       <span></span>
     </button>
 
+    <nav class="mobile-navigation" id="mobileNavigation" aria-label="Main">
+      <a href="artjournal.html">art journal</a>
+      <a href="luluplanet.html">lulu planet</a>
+      <a href="about.html">about</a>
+      <a href="https://thingvision.bigcartel.com/" target="_blank" rel="noopener">shop</a>
+    </nav>
+
     <a href="index.html" class="brand"><img src="main-image.png" alt="thingvision"></a>
 
-    <nav class="desktop-navigation">
+    <nav class="desktop-navigation" aria-label="Main">
       <a href="artjournal.html">art journal</a>
       <a href="luluplanet.html">lulu planet</a>
       <a href="about.html">about</a>
@@ -37,23 +48,16 @@
 
   </header>
 
-  <nav class="mobile-navigation" id="mobileNavigation">
-    <a href="artjournal.html">art journal</a>
-    <a href="luluplanet.html">lulu planet</a>
-    <a href="about.html">about</a>
-    <a href="https://thingvision.bigcartel.com/" target="_blank" rel="noopener">shop</a>
-  </nav>
-
   <main class="home-content">
 
     <section class="home-grid">
 
-      <a href="artjournal.html" class="home-card journal-card">
+      <a href="artjournal.html" class="home-card">
         <img src="journal-preview.png" alt="art journal">
         <div class="card-title">art journal</div>
       </a>
 
-      <a href="luluplanet.html" class="home-card lulu-card">
+      <a href="luluplanet.html" class="home-card">
         <img src="lulu-preview.png" alt="lulu planet">
         <div class="card-title">lulu planet</div>
       </a>
@@ -64,7 +68,7 @@
 
   <footer class="site-footer"></footer>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=3"></script>
 
 </body>
 </html>
