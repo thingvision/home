@@ -6,7 +6,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Art Journal | Thingvision</title>
+  <title>journal | thingvision</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,7 +33,7 @@
     </button>
 
     <nav class="mobile-navigation" id="mobileNavigation" aria-label="Main">
-      <a href="artjournal.html" aria-current="page">art journal</a>
+      <a href="journal.html" aria-current="page">journal</a>
       <a href="luluplanet.html">lulu planet</a>
       <a href="about.html">about</a>
       <a href="https://thingvision.bigcartel.com/" target="_blank" rel="noopener">shop</a>
@@ -42,7 +42,7 @@
     <a href="index.html" class="brand"><img src="main-image.png" alt="thingvision"></a>
 
     <nav class="desktop-navigation" aria-label="Main">
-      <a href="artjournal.html" aria-current="page">art journal</a>
+      <a href="journal.html" aria-current="page">journal</a>
       <a href="luluplanet.html">lulu planet</a>
       <a href="about.html">about</a>
       <a href="https://thingvision.bigcartel.com/">shop</a>
@@ -52,7 +52,7 @@
 
   <main class="journal-content">
 
-    <section class="journal-grid" aria-label="Art journal">
+    <section class="journal-grid" aria-label="journal">
       {% assign journal_images = site.static_files | where_exp: "f", "f.path contains '/journal-images/'" | sort: "path" | reverse %}
       {% for image in journal_images %}
         {% assign ext = image.extname | downcase %}
