@@ -95,13 +95,25 @@ body {
   object-fit: cover;
 }
 
+/* CARD TITLES */
+
 .home-card h2 {
   color: #F05A28 !important;
-  margin: 12px;
-   margin-top: 18px;
+  margin: 12px 0 0;
   font-size: 16px;
   font-weight: 400;
   text-align: center;
+}
+
+/* KEEP CARD TITLES RED-ORANGE */
+
+.home-card,
+.home-card:link,
+.home-card:visited,
+.home-card:hover,
+.home-card:active,
+.home-card * {
+  color: #F05A28 !important;
 }
 
 /* FOOTER */
@@ -147,7 +159,6 @@ body {
   }
 }
 
-
 /* MOBILE */
 
 @media (max-width: 480px) {
@@ -159,6 +170,5 @@ body {
     grid-template-columns: 1fr;
   }
 }
-/* FORCE HOMEPAGE CARD TITLES TO RED-ORANGE */
 
 
