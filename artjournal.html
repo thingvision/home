@@ -1,1 +1,72 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Art Journal | Thingvision</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css?v=4">
+</head>
+
+<body>
+
+  <header class="site-header">
+
+    <button
+      class="hamburger"
+      id="menuBtn"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="mobileNavigation"
+      type="button"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="mobile-navigation" id="mobileNavigation" aria-label="Main">
+      <a href="artjournal.html" aria-current="page">art journal</a>
+      <a href="luluplanet.html">lulu planet</a>
+      <a href="about.html">about</a>
+      <a href="https://thingvision.bigcartel.com/" target="_blank" rel="noopener">shop</a>
+    </nav>
+
+    <a href="index.html" class="brand"><img src="main-image.png" alt="thingvision"></a>
+
+    <nav class="desktop-navigation" aria-label="Main">
+      <a href="artjournal.html" aria-current="page">art journal</a>
+      <a href="luluplanet.html">lulu planet</a>
+      <a href="about.html">about</a>
+      <a href="https://thingvision.bigcartel.com/">shop</a>
+    </nav>
+
+  </header>
+
+  <main class="journal-content">
+
+    <section class="journal-grid" aria-label="Art journal">
+      {% assign journal_images = site.static_files | where_exp: "f", "f.path contains '/journal-images/'" | sort: "path" | reverse %}
+      {% for image in journal_images %}
+        {% assign ext = image.extname | downcase %}
+        {% if ext == ".jpg" or ext == ".jpeg" or ext == ".png" or ext == ".webp" or ext == ".gif" %}
+          <img src="{{ image.path | remove_first: '/' }}" alt="{{ image.basename | replace: '-', ' ' }}" loading="lazy">
+        {% endif %}
+      {% endfor %}
+    </section>
+
+  </main>
+
+  <footer class="site-footer"></footer>
+
+  <script src="script.js?v=4"></script>
+
+</body>
+</html>
