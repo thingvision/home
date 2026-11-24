@@ -171,6 +171,12 @@ body {
   .home-grid {
     grid-template-columns: 1fr;
   }
+}.home-card img {
+  margin-bottom: 24px !important;
 }
 
+.home-card h2 {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
 
