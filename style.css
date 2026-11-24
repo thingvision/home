@@ -1,75 +1,38 @@
 
-/* =========================
-   BASE
-========================= */
-
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  background: #fff;
-  color: #222;
-  font-family: Arial, sans-serif;
+  font-family: "Trebuchet MS", sans-serif;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-
-/* =========================
-   HEADER
-========================= */
+/* HEADER */
 
 .site-header {
-  width: 100%;
-  max-width: 1250px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 35px 25px;
   display: grid;
-  grid-template-columns: 400px 1fr;
-  gap: 0;
+  grid-template-columns: 250px 1fr;
   align-items: center;
+  gap: 45px;
 }
 
-.brand {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.brand-logo {
+.brand img {
   display: block;
   width: 250px;
-  max-width: 100%;
-}
-
-.brand-logo img {
-  display: block;
-  width: 100%;
   height: auto;
 }
 
-.brand-description {
-  margin-top: 12px;
-  font-size: 14px;
-  line-height: 1.5;
-}
-
-
-/* =========================
-   DESKTOP NAVIGATION
-========================= */
+/* DESKTOP NAVIGATION */
 
 .desktop-navigation {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  gap: 24px;
+  justify-content: space-between;
+  gap: 20px;
 }
 
 .desktop-navigation a {
@@ -77,64 +40,36 @@ a {
   font-size: 16.25px;
   font-weight: 400;
   color: #2698E8;
+  text-decoration: none;
   text-transform: lowercase;
   white-space: nowrap;
   transition: opacity 0.2s ease;
 }
 
 .desktop-navigation a:hover {
-  opacity: 0.5;
+  opacity: 0.7;
 }
 
-
-/* =========================
-   MOBILE MENU BUTTON
-========================= */
-
-.hamburger {
-  display: none;
-  border: 0;
-  background: none;
-  padding: 10px;
-  cursor: pointer;
-}
-
-.hamburger span {
-  display: block;
-  width: 25px;
-  height: 2px;
-  margin: 6px 0;
-  background: #222;
-}
-
-.mobile-navigation {
-  display: none;
-}
-
-
-/* =========================
-   HOMEPAGE CARDS
-========================= */
+/* HOMEPAGE CONTENT */
 
 .home-content {
-  width: 100%;
-  max-width: 1250px;
-  margin: 25px auto 35px;
+  max-width: 1000px;
+  margin: 0 auto;
   padding: 0 25px;
 }
+
+/* THREE-COLUMN CARD GRID */
 
 .home-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 25px;
-  justify-content: center;
+  gap: 20px;
 }
 
 .home-card {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  overflow: hidden;
+  min-width: 0;
+  text-align: center;
+  text-decoration: none;
 }
 
 .home-card img {
@@ -142,132 +77,71 @@ a {
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
-  transition: transform 0.3s ease;
 }
 
-.home-card:hover img {
-  transform: scale(1.03);
-}
-
-.card-title {
-  padding: 10px 0;
-  color: #F05A28;
+.home-card h2 {
+  margin: 12px 0 0;
   font-size: 16px;
   font-weight: 400;
+  color: #F05A28;
   text-align: center;
-  text-transform: lowercase;
 }
 
-
-/* =========================
-   FOOTER
-========================= */
+/* FOOTER */
 
 .site-footer {
-  width: 100%;
-  max-width: 1250px;
-  margin: 0 auto;
-  padding: 30px 25px;
-  text-align: center;
-  font-size: 13px;
+  max-width: 1000px;
+  margin: 50px auto 0;
+  padding: 25px;
 }
 
-.social-links {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
+/* MOBILE MENU */
+
+.menu-button {
+  display: none;
 }
 
-.social-links a:hover {
-  opacity: 0.5;
+.mobile-navigation {
+  display: none;
 }
 
-
-/* =========================
-   MOBILE
-========================= */
+/* TABLET */
 
 @media (max-width: 700px) {
-
   .site-header {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 15px;
-    padding: 20px 6%;
-  }
-
-  .brand {
-    max-width: 250px;
-  }
-
-  .brand-description {
-    font-size: 14px;
+    justify-content: space-between;
+    padding: 25px;
   }
 
   .desktop-navigation {
     display: none;
   }
 
-  .hamburger {
+  .menu-button {
     display: block;
-    position: absolute;
-    top: 25px;
-    right: 6%;
-  }
-
-  .mobile-navigation {
-    font-family: "Trebuchet MS", sans-serif;
-    font-weight: 400;
-    color: #2698E8;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-    position: fixed;
-    inset: 0;
-    z-index: 1000;
-    background: #fff;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.25s ease;
   }
 
   .mobile-navigation.open {
-    opacity: 1;
-    visibility: visible;
+    display: flex;
+    flex-direction: column;
   }
 
-  .mobile-navigation a {
-    font-size: 22px;
-    color: #2698E8;
+  .home-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
   }
+}
 
-  .menu-close {
-    position: absolute;
-    top: 25px;
-    right: 6%;
-    border: 0;
-    background: none;
-    font-size: 28px;
-    cursor: pointer;
-  }
+/* MOBILE */
 
-  .home-content {
-    margin: 20px auto;
-    padding: 0 6%;
+@media (max-width: 480px) {
+  .brand img {
+    width: 200px;
   }
 
   .home-grid {
     grid-template-columns: 1fr;
-    max-width: 350px;
-    margin: 0 auto;
-    gap: 20px;
-  }
-
-  .site-footer {
-    padding: 25px 6%;
   }
 }
 
