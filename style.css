@@ -26,13 +26,20 @@ a {
 
 .site-header {
   width: 100%;
-  max-width: 1000px;
+  max-width: 1250px;
   margin: 0 auto;
   padding: 35px 25px;
   display: grid;
-  grid-template-columns: 250px 1fr;
-  gap: 45px;
+  grid-template-columns: 400px 1fr;
+  gap: 0;
   align-items: center;
+}
+
+.brand {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .brand-logo {
@@ -62,11 +69,10 @@ a {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  flex-wrap: wrap;
   gap: 24px;
 }
 
- .desktop-navigation a {
+.desktop-navigation a {
   font-family: "Trebuchet MS", sans-serif;
   font-size: 16.25px;
   font-weight: 400;
@@ -75,13 +81,14 @@ a {
   white-space: nowrap;
   transition: opacity 0.2s ease;
 }
+
 .desktop-navigation a:hover {
   opacity: 0.5;
 }
 
 
 /* =========================
-   MOBILE MENU
+   MOBILE MENU BUTTON
 ========================= */
 
 .hamburger {
@@ -106,26 +113,27 @@ a {
 
 
 /* =========================
-   HOMEPAGE
+   HOMEPAGE CARDS
 ========================= */
 
 .home-content {
   width: 100%;
-  max-width: 1000px;
-  margin: 35px auto;
+  max-width: 1250px;
+  margin: 25px auto 35px;
   padding: 0 25px;
 }
 
 .home-grid {
-  grid-template-columns: 1fr;
-  max-width: 300px;
-  margin: 0 auto;
-  gap: 18px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 25px;
+  justify-content: center;
 }
 
 .home-card {
-  display: block;
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   overflow: hidden;
 }
 
@@ -134,6 +142,7 @@ a {
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
+  transition: transform 0.3s ease;
 }
 
 .home-card:hover img {
@@ -141,17 +150,12 @@ a {
 }
 
 .card-title {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 10px 0;
   color: #F05A28;
   font-size: 16px;
   font-weight: 400;
-  text-transform: lowercase;
   text-align: center;
-  pointer-events: none;
+  text-transform: lowercase;
 }
 
 
@@ -161,7 +165,7 @@ a {
 
 .site-footer {
   width: 100%;
-  max-width: 1000px;
+  max-width: 1250px;
   margin: 0 auto;
   padding: 30px 25px;
   text-align: center;
@@ -213,9 +217,9 @@ a {
   }
 
   .mobile-navigation {
-  font-family: "Trebuchet MS", sans-serif;
-  font-weight: 400;
-  color: #2698E8;
+    font-family: "Trebuchet MS", sans-serif;
+    font-weight: 400;
+    color: #2698E8;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -237,6 +241,7 @@ a {
 
   .mobile-navigation a {
     font-size: 22px;
+    color: #2698E8;
   }
 
   .menu-close {
@@ -265,3 +270,4 @@ a {
     padding: 25px 6%;
   }
 }
+
