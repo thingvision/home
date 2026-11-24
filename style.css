@@ -63,13 +63,13 @@ body {
   opacity: 0.7;
 }
 
-/* MOBILE MENU BUTTON - HIDDEN ON DESKTOP */
+/* MOBILE MENU BUTTON */
 
 .hamburger {
   display: none;
 }
 
-/* MOBILE NAVIGATION - HIDDEN ON DESKTOP */
+/* MOBILE NAVIGATION */
 
 .mobile-navigation {
   display: none;
@@ -138,20 +138,22 @@ body {
 
 /* TABLET AND MOBILE */
 
-@media (max-width: 700px) {
+@media screen and (max-width: 700px) {
 
-  /* MOBILE HEADER */
+  /* HEADER */
 
-  .site-header {
+  header.site-header {
     width: 100%;
-    padding: 15px 25px 25px;
+    max-width: 100%;
+    margin: 0;
+    padding: 12px 25px 22px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 15px;
   }
 
-  /* MENU BUTTON */
+  /* HAMBURGER */
 
   .hamburger {
     display: flex;
@@ -174,24 +176,28 @@ body {
     background: #2698E8;
   }
 
-  /* CENTERED MAIN LOGO */
+  /* FORCE LOGO TO CENTER OF PHONE */
 
-  .site-header .brand {
+  header.site-header .brand {
+    position: relative !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 100vw !important;
+    margin: 0 !important;
+    padding: 0 !important;
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
-    width: 100% !important;
-    margin: 0 auto !important;
   }
 
-  .site-header .brand-logo {
+  header.site-header .brand-logo {
     display: block !important;
     width: 200px !important;
     max-width: 200px !important;
     margin: 0 auto !important;
   }
 
-  .site-header .brand-logo img {
+  header.site-header .brand-logo img {
     display: block !important;
     width: 200px !important;
     max-width: 200px !important;
@@ -202,10 +208,10 @@ body {
   /* HIDE DESKTOP NAVIGATION */
 
   .desktop-navigation {
-    display: none;
+    display: none !important;
   }
 
-  /* EXPANDING MOBILE NAVIGATION */
+  /* MOBILE ACCORDION */
 
   .mobile-navigation {
     display: none;
@@ -234,14 +240,10 @@ body {
 
 /* SMALL MOBILE */
 
-@media (max-width: 480px) {
+@media screen and (max-width: 480px) {
 
-  .site-header {
-    padding: 12px 25px 22px;
-  }
-
-  .site-header .brand-logo,
-  .site-header .brand-logo img {
+  header.site-header .brand-logo,
+  header.site-header .brand-logo img {
     width: 200px !important;
     max-width: 200px !important;
   }
