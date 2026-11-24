@@ -51,11 +51,15 @@ body {
   opacity: 0.7;
 }
 
-/* MOBILE MENU */
+/* HIDE EXTRA DESKTOP BUTTON */
 
-.menu-button {
-  display: none;
+.menu-button,
+#menuBtn,
+#menuClose {
+  display: none !important;
 }
+
+/* MOBILE NAVIGATION */
 
 .mobile-navigation {
   display: none;
@@ -118,8 +122,13 @@ body {
     display: none;
   }
 
-  .menu-button {
-    display: block;
+  .menu-button,
+  #menuBtn {
+    display: block !important;
+  }
+
+  #menuClose {
+    display: block !important;
   }
 
   .mobile-navigation {
@@ -148,4 +157,5 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
 
