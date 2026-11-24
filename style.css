@@ -237,3 +237,46 @@ body {
     font-size: 14px;
   }
 }
+
+/* ART JOURNAL: touching masonry, newest first */
+
+.journal-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 25px;
+}
+
+.journal-grid {
+  column-count: 3;
+  column-gap: 0;
+}
+
+.journal-grid.is-masonry {
+  display: flex;
+  align-items: flex-start;
+  column-count: auto;
+}
+
+.journal-column {
+  flex: 1;
+  min-width: 0;
+}
+
+.journal-grid img {
+  display: block;
+  width: 100%;
+  height: auto;
+  break-inside: avoid;
+}
+
+@media screen and (max-width: 700px) {
+  .journal-grid {
+    column-count: 2;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .journal-content {
+    padding: 0 20px;
+  }
+}
