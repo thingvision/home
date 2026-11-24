@@ -122,7 +122,12 @@ body {
 /* TABLET AND MOBILE */
 
 @media (max-width: 700px) {
-
+  .brand-logo img {
+    display: block;
+    width: 200px;
+    height: auto;
+    margin: 0 auto;
+  }
   /* MOBILE HEADER */
 
   .site-header {
