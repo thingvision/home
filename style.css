@@ -106,26 +106,26 @@ a {
 
 
 /* =========================
-   HOMEPAGE
+   HOMEPAGE CARDS
 ========================= */
 
 .home-content {
   width: 100%;
-  max-width: 1000px;
-  margin: 35px auto;
-  padding: 0 25px;
+  max-width: 760px;
+  margin: 15px auto 25px;
+  padding: 0 20px;
 }
 
 .home-grid {
-  grid-template-columns: 1fr;
-  max-width: 300px;
-  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  justify-content: center;
   gap: 18px;
 }
 
 .home-card {
-  display: block;
-  position: relative;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
 }
 
@@ -134,6 +134,7 @@ a {
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
+  transition: transform 0.3s ease;
 }
 
 .home-card:hover img {
@@ -141,19 +142,13 @@ a {
 }
 
 .card-title {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 8px 0;
   color: #F05A28;
   font-size: 16px;
   font-weight: 400;
-  text-transform: lowercase;
   text-align: center;
-  pointer-events: none;
+  text-transform: lowercase;
 }
-
 
 /* =========================
    FOOTER
