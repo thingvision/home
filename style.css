@@ -146,6 +146,7 @@ body {
   }
 }
 
+
 /* MOBILE */
 
 @media (max-width: 480px) {
@@ -157,5 +158,14 @@ body {
     grid-template-columns: 1fr;
   }
 }
+/* FORCE HOMEPAGE CARD TITLES TO RED-ORANGE */
 
+.home-card,
+.home-card:link,
+.home-card:visited,
+.home-card:hover,
+.home-card:active,
+.home-card * {
+  color: #F05A28 !important;
+}
 
