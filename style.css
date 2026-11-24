@@ -51,7 +51,7 @@ body {
   opacity: 0.7;
 }
 
-/* HIDE MENU BUTTONS */
+/* HIDE EXTRA MENU BUTTONS */
 
 .menu-button,
 #menuBtn,
@@ -71,7 +71,7 @@ body {
   padding: 0 25px;
 }
 
-/* THREE-COLUMN GRID */
+/* THREE-COLUMN DESKTOP GRID */
 
 .home-grid {
   display: grid;
@@ -106,8 +106,6 @@ body {
   text-align: center;
 }
 
-/* KEEP CARD TITLES RED-ORANGE */
-
 .home-card,
 .home-card:link,
 .home-card:visited,
@@ -125,20 +123,22 @@ body {
   padding: 25px;
 }
 
-/* TABLET */
+/* TABLET AND MOBILE */
 
 @media (max-width: 700px) {
 
+  /* HEADER */
+
   .site-header {
     width: 100%;
-    padding: 25px;
+    padding: 20px 25px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 16px;
+    gap: 15px;
   }
 
-  /* LOGO ALIGNMENT */
+  /* LOGO LEFT ALIGNED */
 
   .brand {
     width: 100%;
@@ -149,16 +149,18 @@ body {
     width: 200px;
     max-width: 100%;
     height: auto;
+    margin: 0;
   }
 
-  /* COMPACT MOBILE NAVIGATION */
+  /* MOBILE LINKS LEFT ALIGNED */
 
   .desktop-navigation {
     display: flex !important;
     width: 100%;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
-    gap: 5px;
+    flex-wrap: wrap;
+    gap: 18px;
     margin: 0;
   }
 
@@ -167,7 +169,7 @@ body {
     white-space: nowrap;
   }
 
-  /* REMOVE ALL MOBILE MENU BUTTONS */
+  /* REMOVE MENU BUTTONS */
 
   .menu-button,
   #menuBtn,
@@ -176,7 +178,7 @@ body {
     display: none !important;
   }
 
-  /* TWO-COLUMN CARDS */
+  /* TWO-COLUMN MOBILE GRID */
 
   .home-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -184,7 +186,7 @@ body {
   }
 }
 
-/* MOBILE */
+/* SMALL MOBILE */
 
 @media (max-width: 480px) {
 
@@ -198,15 +200,24 @@ body {
   }
 
   .desktop-navigation {
-    gap: 4px;
+    gap: 14px;
   }
 
   .desktop-navigation a {
     font-size: 12px;
   }
 
+  .home-content {
+    padding: 0 25px;
+  }
+
   .home-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .home-card h2 {
+    font-size: 14px;
   }
 }
 
