@@ -1,5 +1,4 @@
 
-
 * {
   box-sizing: border-box;
 }
@@ -12,6 +11,7 @@ body {
 /* HEADER */
 
 .site-header {
+  position: relative;
   max-width: 1000px;
   margin: 0 auto;
   padding: 35px 25px;
@@ -21,8 +21,10 @@ body {
   gap: 45px;
 }
 
+/* LOGO */
+
 .brand {
-  min-width: 0;
+  flex-shrink: 0;
 }
 
 .brand-logo {
@@ -32,7 +34,6 @@ body {
 .brand-logo img {
   display: block;
   width: 150px;
-  max-width: 100%;
   height: auto;
 }
 
@@ -63,10 +64,13 @@ body {
   opacity: 0.7;
 }
 
-/* MOBILE MENU BUTTON */
+/* HAMBURGER */
 
 .hamburger {
   display: none;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
 }
 
 /* MOBILE NAVIGATION */
@@ -75,7 +79,7 @@ body {
   display: none;
 }
 
-/* HOMEPAGE CONTENT */
+/* HOMEPAGE */
 
 .home-content {
   max-width: 1000px;
@@ -83,7 +87,7 @@ body {
   padding: 0 25px;
 }
 
-/* THREE-COLUMN DESKTOP GRID */
+/* IMAGE GRID */
 
 .home-grid {
   display: grid;
@@ -103,29 +107,27 @@ body {
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
-  margin-bottom: 24px !important;
+  margin-bottom: 24px;
 }
 
 /* CARD TITLES */
 
-.home-card h2,
-.home-card .card-title {
+.card-title {
   display: block;
-  margin: 0 !important;
-  padding: 0 !important;
+  margin: 0;
+  padding: 0;
+  color: #F05A28;
   font-size: 16px;
   font-weight: 400;
   text-align: center;
-  color: #F05A28 !important;
 }
 
 .home-card,
 .home-card:link,
 .home-card:visited,
 .home-card:hover,
-.home-card:active,
-.home-card * {
-  color: #F05A28 !important;
+.home-card:active {
+  color: #F05A28;
 }
 
 /* FOOTER */
@@ -142,31 +144,31 @@ body {
 
   /* HEADER */
 
-  header.site-header {
+  .site-header {
+    position: relative;
+    display: block;
     width: 100%;
     max-width: 100%;
+    min-height: 235px;
     margin: 0;
-    padding: 12px 25px 22px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
+    padding: 12px 0 20px;
   }
 
-  /* HAMBURGER */
+  /* HAMBURGER POSITION */
 
   .hamburger {
+    position: absolute;
+    top: 12px;
+    right: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-self: flex-end;
+    align-items: center;
     gap: 5px;
     width: 32px;
     height: 32px;
     padding: 5px;
-    border: 0;
-    background: transparent;
-    cursor: pointer;
+    z-index: 2;
   }
 
   .hamburger span {
@@ -176,39 +178,38 @@ body {
     background: #2698E8;
   }
 
-  /* FORCE LOGO TO CENTER OF PHONE */
+  /* LOGO CENTERED ON SCREEN */
 
-  header.site-header .brand {
-    position: relative !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    width: 100vw !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
+  .brand {
+    position: absolute;
+    top: 55px;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
-  header.site-header .brand-logo {
-    display: block !important;
-    width: 200px !important;
-    max-width: 200px !important;
-    margin: 0 auto !important;
+  .brand-logo {
+    display: block;
+    width: 200px;
+    margin: 0 auto;
   }
 
-  header.site-header .brand-logo img {
-    display: block !important;
-    width: 200px !important;
-    max-width: 200px !important;
-    height: auto !important;
-    margin: 0 auto !important;
+  .brand-logo img {
+    display: block;
+    width: 200px;
+    max-width: 200px;
+    height: auto;
+    margin: 0 auto;
   }
 
-  /* HIDE DESKTOP NAVIGATION */
+  /* HIDE DESKTOP NAV */
 
   .desktop-navigation {
-    display: none !important;
+    display: none;
   }
 
   /* MOBILE ACCORDION */
@@ -219,7 +220,7 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 15px;
-    padding: 5px 25px 20px;
+    padding: 15px 20px 20px;
   }
 
   .mobile-navigation.open {
@@ -230,7 +231,7 @@ body {
     font-size: 15px;
   }
 
-  /* TWO-COLUMN CARDS */
+  /* TWO-COLUMN GRID */
 
   .home-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -238,18 +239,12 @@ body {
   }
 }
 
-/* SMALL MOBILE */
+/* SMALL PHONES */
 
 @media screen and (max-width: 480px) {
 
-  header.site-header .brand-logo,
-  header.site-header .brand-logo img {
-    width: 200px !important;
-    max-width: 200px !important;
-  }
-
   .home-content {
-    padding: 0 25px;
+    padding: 0 20px;
   }
 
   .home-grid {
@@ -257,8 +252,7 @@ body {
     gap: 12px;
   }
 
-  .home-card h2,
-  .home-card .card-title {
+  .card-title {
     font-size: 14px;
   }
 }
