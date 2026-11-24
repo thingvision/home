@@ -1,5 +1,3 @@
----
----
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css?v=4">
+  <link rel="stylesheet" href="style.css?v=5">
 </head>
 
 <body>
@@ -52,21 +50,18 @@
 
   <main class="journal-content">
 
-    <section class="journal-grid" aria-label="journal">
-      {% assign journal_images = site.static_files | where_exp: "f", "f.path contains '/journal-images/'" | sort: "path" | reverse %}
-      {% for image in journal_images %}
-        {% assign ext = image.extname | downcase %}
-        {% if ext == ".jpg" or ext == ".jpeg" or ext == ".png" or ext == ".webp" or ext == ".gif" %}
-          <img src="{{ image.path | remove_first: '/' }}" alt="{{ image.basename | replace: '-', ' ' }}" loading="lazy">
-        {% endif %}
-      {% endfor %}
-    </section>
+    <section
+      class="journal-grid"
+      aria-label="journal"
+      data-repo="thingvision/home"
+      data-folder="journal-images"
+    ></section>
 
   </main>
 
   <footer class="site-footer"></footer>
 
-  <script src="script.js?v=4"></script>
+  <script src="script.js?v=5"></script>
 
 </body>
 </html>
