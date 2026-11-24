@@ -51,7 +51,7 @@ body {
   opacity: 0.7;
 }
 
-/* HIDE EXTRA DESKTOP BUTTON */
+/* HIDE MENU BUTTONS */
 
 .menu-button,
 #menuBtn,
@@ -59,10 +59,8 @@ body {
   display: none !important;
 }
 
-/* MOBILE NAVIGATION */
-
 .mobile-navigation {
-  display: none;
+  display: none !important;
 }
 
 /* HOMEPAGE CONTENT */
@@ -93,6 +91,7 @@ body {
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
+  margin-bottom: 24px !important;
 }
 
 /* CARD TITLES */
@@ -100,8 +99,8 @@ body {
 .home-card h2 {
   color: #F05A28 !important;
   display: block;
-  padding-top: 24px !important;
   margin: 0 !important;
+  padding: 0 !important;
   font-size: 16px;
   font-weight: 400;
   text-align: center;
@@ -129,31 +128,55 @@ body {
 /* TABLET */
 
 @media (max-width: 700px) {
+
   .site-header {
+    width: 100%;
     padding: 25px;
-  }
-
-  .desktop-navigation {
-    display: none;
-  }
-
-  .menu-button,
-  #menuBtn {
-    display: block !important;
-  }
-
-  #menuClose {
-    display: block !important;
-  }
-
-  .mobile-navigation {
-    display: none;
-  }
-
-  .mobile-navigation.open {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
   }
+
+  /* LOGO ALIGNMENT */
+
+  .brand {
+    width: 100%;
+  }
+
+  .brand img {
+    display: block;
+    width: 200px;
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* COMPACT MOBILE NAVIGATION */
+
+  .desktop-navigation {
+    display: flex !important;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+    margin: 0;
+  }
+
+  .desktop-navigation a {
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  /* REMOVE ALL MOBILE MENU BUTTONS */
+
+  .menu-button,
+  #menuBtn,
+  #menuClose,
+  .mobile-navigation {
+    display: none !important;
+  }
+
+  /* TWO-COLUMN CARDS */
 
   .home-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -164,19 +187,27 @@ body {
 /* MOBILE */
 
 @media (max-width: 480px) {
+
+  .site-header {
+    padding: 20px 25px;
+    gap: 15px;
+  }
+
   .brand img {
     width: 200px;
+  }
+
+  .desktop-navigation {
+    gap: 4px;
+  }
+
+  .desktop-navigation a {
+    font-size: 12px;
   }
 
   .home-grid {
     grid-template-columns: 1fr;
   }
-}.home-card img {
-  margin-bottom: 24px !important;
 }
 
-.home-card h2 {
-  margin-top: 0 !important;
-  padding-top: 0 !important;
-}
 
