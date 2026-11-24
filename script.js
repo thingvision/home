@@ -11,12 +11,15 @@ if (menuBtn && mobileNav) {
   });
 }
 
-/* ART JOURNAL: deal images into columns, newest across the top row */
+/* ART JOURNAL: load images from the GitHub folder, newest first */
 
 const journalGrid = document.querySelector(".journal-grid");
 
 if (journalGrid) {
-  const images = Array.from(journalGrid.querySelectorAll("img"));
+  const repo = journalGrid.dataset.repo;
+  const folder = journalGrid.dataset.folder;
+  const imageTypes = /\.(jpe?g|png|webp|gif)$/i;
+  let images = [];
   let currentCols = 0;
 
   const layoutJournal = () => {
@@ -37,6 +40,24 @@ if (journalGrid) {
     images.forEach((img, i) => columns[i % cols].appendChild(img));
   };
 
-  layoutJournal();
-  window.addEventListener("resize", layoutJournal);
+  fetch(`https://api.github.com/repos/${repo}/contents/${folder}`)
+    .then((response) => response.json())
+    .then((files) => {
+      images = files
+        .filter((file) => file.type === "file" && imageTypes.test(file.name))
+        .sort((a, b) => b.name.localeCompare(a.name))
+        .map((file) => {
+          const img = document.createElement("img");
+          img.src = `${folder}/${file.name}`;
+          img.alt = file.name.replace(imageTypes, "").replace(/[-_]/g, " ");
+          img.loading = "lazy";
+          return img;
+        });
+
+      layoutJournal();
+      window.addEventListener("resize", layoutJournal);
+    })
+    .catch(() => {
+      journalGrid.textContent = "Images could not load. Please refresh the page.";
+    });
 }
