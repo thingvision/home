@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,6 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <title>Thingvision</title>
 </head>
 
 <body>
@@ -14,27 +14,6 @@
   <!-- HEADER -->
 
   <header class="site-header">
-
-    <div class="brand">
-
-      <a href="index.html" class="brand-logo">
-        <img src="main-image.png" alt="thingvision">
-      </a>
-
-      <div class="brand-description">
-      
-      </div>
-
-    </div>
-
-    <!-- DESKTOP NAVIGATION -->
-
-    <nav class="desktop-navigation">
-  <a href="artjournal.html">art journal</a>
-  <a href="luluplanet.html">lulu planet</a>
-  <a href="about.html">about</a>
-  <a href="https://thingvision.bigcartel.com/">shop</a>
-</nav>
 
     <!-- MOBILE MENU BUTTON -->
 
@@ -44,29 +23,46 @@
       aria-label="Open menu"
       aria-expanded="false"
       aria-controls="mobileNavigation"
+      type="button"
     >
       <span></span>
       <span></span>
       <span></span>
     </button>
 
+    <!-- LOGO -->
+
+    <div class="brand">
+
+      <a href="index.html" class="brand-logo">
+        <img src="main-image.png" alt="thingvision">
+      </a>
+
+      <div class="brand-description"></div>
+
+    </div>
+
+    <!-- DESKTOP NAVIGATION -->
+
+    <nav class="desktop-navigation">
+      <a href="artjournal.html">art journal</a>
+      <a href="luluplanet.html">lulu planet</a>
+      <a href="about.html">about</a>
+      <a href="https://thingvision.bigcartel.com/">shop</a>
+    </nav>
+
   </header>
 
-
-  <!-- MOBILE NAVIGATION -->
+  <!-- MOBILE ACCORDION NAVIGATION -->
 
   <nav class="mobile-navigation" id="mobileNavigation">
 
-  <button class="menu-close" id="menuClose" aria-label="Close menu">
-    &times;
-  </button>
+    <a href="artjournal.html">art journal</a>
+    <a href="luluplanet.html">lulu planet</a>
+    <a href="about.html">about</a>
+    <a href="https://thingvision.bigcartel.com/" target="_blank" rel="noopener">shop</a>
 
-  <a href="artjournal.html">art journal</a>
-  <a href="luluplanet.html">lulu planet</a>
-  <a href="about.html">about</a>
-  <a href="https://thingvision.bigcartel.com/" target="_blank" rel="noopener">shop</a>
-
-</nav>
+  </nav>
 
   <!-- HOMEPAGE -->
 
@@ -88,16 +84,10 @@
 
   </main>
 
-
   <!-- FOOTER -->
 
   <footer class="site-footer">
-
-
-  
-
   </footer>
-
 
   <script src="script.js"></script>
 
